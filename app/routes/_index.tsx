@@ -50,7 +50,7 @@ export default function Index() {
             <img
               alt="Furina"
               className="hidden sm:block"
-              src="/assets/furina1.png"
+              src="/assets/furina.png"
             />
           </div>
         </section>
