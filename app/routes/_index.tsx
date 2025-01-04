@@ -18,8 +18,10 @@ export default function Index() {
       <Nav />
 
       <main className="flex-1">
-        <section className="relative container py-4 ">
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+        <section className="relative container py-4">
+          <div className="absolute inset-0 -z-20 bg-gradient-to-b from-blue-950/95 to-transparent rounded-full bg-blend-overlay blur-3xl" />
+
+          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] relative">
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
