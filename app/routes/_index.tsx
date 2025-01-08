@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { motion } from "framer-motion";
 import { Link } from "@remix-run/react";
 import Footer from "~/components/Footer";
 import Nav from "~/components/Nav";
@@ -19,11 +20,16 @@ export default function Index() {
       <Nav />
 
       <main className="flex-1">
-        <section className="relative container py-4">
+        <section className="relative container py-4 ">
           <div className="absolute inset-0 -z-20 bg-gradient-to-b from-blue-950/95 to-transparent rounded-full bg-blend-overlay blur-3xl" />
 
           <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] relative">
-            <div className="flex flex-col justify-center space-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col justify-center space-y-4"
+            >
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                   Bot de música para o seu servidor Discord
@@ -33,7 +39,12 @@ export default function Index() {
                   música completo, fácil de usar e com alta qualidade de som!
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row justify-center sm:justify-start">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col gap-2 min-[400px]:flex-row justify-center sm:justify-start"
+              >
                 <Link
                   className="inline-flex h-10 items-center justify-center rounded-md bg-blue-300 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-blue-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
                   to={""}
@@ -46,9 +57,13 @@ export default function Index() {
                 >
                   Saiba mais
                 </Link>
-              </div>
-            </div>
-            <img
+              </motion.div>
+            </motion.div>
+
+            <motion.img
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               alt="Furina"
               className="hidden sm:block"
               src="/assets/furina.png"
