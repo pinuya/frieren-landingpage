@@ -1,5 +1,6 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import Footer from "~/components/Footer";
 import Nav from "~/components/Nav";
 
 export const meta: MetaFunction = () => {
@@ -54,6 +55,7 @@ export default function Index() {
             />
           </div>
         </section>
+        <Footer />
       </main>
     </div>
   );
