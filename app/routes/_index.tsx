@@ -3,74 +3,65 @@ import { motion } from "framer-motion";
 import { Link } from "@remix-run/react";
 import Footer from "~/components/Footer";
 import Nav from "~/components/Nav";
+import Typewriter from "~/components/fancy/typewriter";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Furina" },
+    { title: "Amadeus" },
     {
       name: "Melhor bot de musica",
-      content: "Bem-vindos a landing page da Furina Bot!",
+      content: "Bem-vindos a landing page da Amadeus bot!",
     },
   ];
 };
 
 export default function Index() {
   return (
-    <div className="container mx-auto">
+    <div className="">
       <Nav />
 
-      <main className="flex-1">
-        <section className="relative container py-4 ">
-          <div className="absolute inset-0 -z-20 bg-gradient-to-b from-blue-950/95 to-transparent rounded-full bg-blend-overlay blur-3xl" />
+      <main className="">
+        <section
+          id="hero"
+          className="relative h-screen flex flex-col items-center justify-center py-4"
+        >
+          {/* Gradiente e background */}
+          <div
+            className="absolute inset-0 -z-10 bg-cover bg-center"
+            style={{
+              backgroundImage: "url('/assets/bg-hero-section.jpg')",
+              backgroundAttachment: "fixed", // Para efeito de paralaxe (opcional)
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black" />
+          </div>
 
-          <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] relative">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col justify-center space-y-4"
-            >
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Bot de música para o seu servidor Discord
-                </h1>
-                <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                  Transforme sua experiência no Discord com a Furina. Um bot de
-                  música completo, fácil de usar e com alta qualidade de som!
-                </p>
-              </div>
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col gap-2 min-[400px]:flex-row justify-center sm:justify-start"
-              >
-                <Link
-                  className="inline-flex h-10 items-center justify-center rounded-md bg-blue-300 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-blue-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
-                  to={""}
-                >
-                  Comece agora
-                </Link>
-                <Link
-                  className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 hover:bg-gray-900 px-8 text-sm font-medium shadow-sm transition-colors text-gray-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
-                  to={""}
-                >
-                  Saiba mais
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            <motion.img
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              alt="Furina"
-              className="hidden sm:block"
-              src="/assets/furina.png"
-            />
+          {/* Conteúdo centralizado */}
+          <div className="container mx-auto relative z-10">
+            <div className="w-full md:text-4xl lg:text-7xl sm:text-3xl text-2xl flex flex-row items-center justify-center font-semibold overflow-hidden py-3 text-white">
+              <span className="whitespace-pre-wrap">
+                <span>{"Amadeus "}</span>
+                <Typewriter
+                  text={["system", "bot"]}
+                  speed={70}
+                  className="text-[#FE9001] brightness-90"
+                  waitTime={1500}
+                  deleteSpeed={40}
+                  cursorChar={"_"}
+                />
+              </span>
+            </div>
+            <span className="text-gray-400 text-center block">
+              Um simples bot de música para seu servidor Discord.
+            </span>
           </div>
         </section>
-        <Footer />
+
+        <section id="about" className="h-min-screen">
+          section about
+        </section>
+
+        {/* <Footer /> */}
       </main>
     </div>
   );

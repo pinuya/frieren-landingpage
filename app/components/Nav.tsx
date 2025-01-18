@@ -1,9 +1,10 @@
 import { Link } from "@remix-run/react";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { Button } from "./ui/button";
 
 const menuItems = [
-  { name: "Add bot", href: "/" },
+  { name: "Sobre", href: "/" },
   { name: "Suporte", href: "/" },
   { name: "Documentação", href: "/" },
 ];
@@ -11,49 +12,30 @@ const menuItems = [
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="flex flex-row items-center justify-between mt-4">
-      <a href="/">
-        <img src="/assets/furinabotlogo.png" className="w-[130px]" />
-      </a>
+    <nav className="flex flex-row items-center justify-between mt-4 container mx-auto">
+      <Link to="/" className="flex flex-row items-center gap-2">
+        <img src="/favicon.ico" className="w-[50px]" />
+        <span className="font-medium text-xl">Amadeus</span>
+      </Link>
 
-      <ul className="hidden md:flex space-x-6">
+      <ul className="hidden md:flex space-x-6 rounded-full px-8 py-2 border border-1 border-gray-800 font-poppins uppercase">
         {menuItems.map((item) => (
           <li key={item.name}>
             <Link to={item.href}>
-              <span className="relative cursor-pointer group">
+              <span className="cursor-pointer hover:text-[#FE9001] brightness-90   text-sm">
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-300 transition-all duration-300 ease-in-out group-hover:w-full" />
               </span>
             </Link>
           </li>
         ))}
       </ul>
 
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden text-foreground hover:text-blue-300 focus:outline-none"
+      <Button
+        variant={"outline"}
+        className="rounded-md text-white border border-[#FE9001]/50 hover:bg-slate-800/50 "
       >
-        <Menu className="h-6 w-6" />
-        <span className="sr-only">Abrir menu</span>
-      </button>
-
-      {isOpen && (
-        <div className="md:hidden">
-          <nav className="px-4 pt-2 pb-4 space-y-2">
-            {menuItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="block text-foreground hover:text-blue-400 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
+        Adicionar Bot
+      </Button>
     </nav>
   );
 }

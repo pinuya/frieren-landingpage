@@ -1,15 +1,14 @@
 import { Link } from "@remix-run/react";
-import { Github, Linkedin, Twitter, TwitterIcon, X } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="text-white">
       <div className="px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Coluna 1: Logo e descrição */}
           <div>
             <div>
-              <img src="/assets/furinabotlogo.png" className="w-40" />
+              <img src="/favicon.ico" className="w-24" />
             </div>
             <p className="text-gray-300 mt-4">
               Oferecendo soluções inovadoras para um mundo em constante
