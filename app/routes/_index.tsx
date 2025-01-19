@@ -25,20 +25,18 @@ export default function Index() {
           id="hero"
           className="relative h-screen flex flex-col items-center justify-center py-4"
         >
-          {/* Gradiente e background */}
           <div
             className="absolute inset-0 -z-10 bg-cover bg-center"
             style={{
               backgroundImage: "url('/assets/bg-hero-section.jpg')",
-              backgroundAttachment: "fixed", // Para efeito de paralaxe (opcional)
+              backgroundAttachment: "fixed",
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black" />
           </div>
 
-          {/* Conteúdo centralizado */}
           <div className="container mx-auto relative z-10">
-            <div className="w-full md:text-4xl lg:text-7xl sm:text-3xl text-2xl flex flex-row items-center justify-center font-semibold overflow-hidden py-3 text-white">
+            <div className="w-full md:text-4xl lg:text-7xl sm:text-3xl text-2xl flex flex-row font-semibold overflow-hidden py-3 text-white">
               <span className="whitespace-pre-wrap">
                 <span>{"Amadeus "}</span>
                 <Typewriter
@@ -51,7 +49,7 @@ export default function Index() {
                 />
               </span>
             </div>
-            <span className="text-gray-400 text-center block">
+            <span className="text-gray-400 block">
               Um simples bot de música para seu servidor Discord.
             </span>
           </div>
