@@ -2,8 +2,14 @@ import type { MetaFunction } from "@remix-run/node";
 import { motion } from "framer-motion";
 import { Link } from "@remix-run/react";
 import Footer from "~/components/Footer";
-import Nav from "~/components/Nav";
 import Typewriter from "~/components/fancy/typewriter";
+
+const menuItems = [
+  { name: "Adicionar Bot", href: "/" },
+  { name: "Sobre", href: "/#about" },
+  { name: "Suporte", href: "/" },
+  { name: "Documentação", href: "/#docs" },
+];
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,10 +23,26 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="">
-      <Nav />
+    <div>
+      <nav className="flex flex-row items-center justify-between mx-auto mt-4 sticky top-0 container">
+        <Link to="/" className="flex flex-row items-center gap-2">
+          <img src="/favicon.ico" className="w-[50px]" />
+        </Link>
 
-      <main className="">
+        <ul className="hidden md:flex space-x-6 rounded-full px-8 py-2 border border-1 border-gray-800 font-poppins uppercase">
+          {menuItems.map((item) => (
+            <li key={item.name}>
+              <Link to={item.href}>
+                <span className="cursor-pointer hover:text-[#FE9001] brightness-90  text-sm">
+                  {item.name}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <main>
         <section
           id="hero"
           className="relative h-screen flex flex-col items-center justify-center py-4"
@@ -55,9 +77,19 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="about" className="h-min-screen">
-          section about
+        <section id="about" className="h-min-screen bg-black">
+          <div className="container mx-auto">
+            <h1 className="">Sobre</h1>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Dignissimos totam alias dolorum pariatur iusto sint eaque
+              deserunt, maiores, deleniti ipsum tempora itaque praesentium nihil
+              corrupti. Corporis consequatur accusantium beatae quia!
+            </p>
+          </div>
         </section>
+
+        <section id="docs">Documentação</section>
 
         {/* <Footer /> */}
       </main>
