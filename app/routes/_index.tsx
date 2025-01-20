@@ -3,12 +3,22 @@ import { motion } from "framer-motion";
 import { Link } from "@remix-run/react";
 import Footer from "~/components/Footer";
 import Typewriter from "~/components/fancy/typewriter";
+import { Button } from "~/components/ui/button";
+import { MoveRight } from "lucide-react";
+import MusicBotAbout from "~/components/About";
 
 const menuItems = [
   { name: "Adicionar Bot", href: "/" },
   { name: "Sobre", href: "/#about" },
-  { name: "Suporte", href: "/" },
   { name: "Documentação", href: "/#docs" },
+  { name: "Suporte", href: "/#support" },
+];
+
+const aboutItems = [
+  "Qualidade de som cristalina, como se você estivesse em um show ao vivo.",
+  "Crie filas de músicas com seus amigos em tempo real!",
+  "Comandos simples e intuitivos: toque, pule, pause ou embaralhe músicas com facilidade.",
+  "100% gratuito, leve e sempre online para animar seu servidor.",
 ];
 
 export const meta: MetaFunction = () => {
@@ -24,12 +34,12 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div>
-      <nav className="flex flex-row items-center justify-between mx-auto mt-4 sticky top-0 container">
+      <nav className="flex flex-row items-center justify-between mx-auto mt-4 container bg-black">
         <Link to="/" className="flex flex-row items-center gap-2">
           <img src="/favicon.ico" className="w-[50px]" />
         </Link>
 
-        <ul className="hidden md:flex space-x-6 rounded-full px-8 py-2 border border-1 border-gray-800 font-poppins uppercase">
+        <ul className="flex space-x-6 font-poppins uppercase">
           {menuItems.map((item) => (
             <li key={item.name}>
               <Link to={item.href}>
@@ -54,7 +64,7 @@ export default function Index() {
               backgroundAttachment: "fixed",
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/70 to-black" />
           </div>
 
           <div className="container mx-auto relative z-10">
@@ -77,19 +87,46 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="about" className="h-min-screen bg-black">
-          <div className="container mx-auto">
-            <h1 className="">Sobre</h1>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos totam alias dolorum pariatur iusto sint eaque
-              deserunt, maiores, deleniti ipsum tempora itaque praesentium nihil
-              corrupti. Corporis consequatur accusantium beatae quia!
-            </p>
+        <section id="about" className="h-screen bg-black">
+          <div className="grid grid-cols-2 mx-auto container gap-20">
+            <div className="space-y-6">
+              <h1 className="text-4xl font-poppins font-bold uppercase">
+                Amadeus Bot
+              </h1>
+              <p className="text-gray-400">
+                Imagine um bot que transforma cada momento no seu servidor
+                Discord em uma experiência inesquecível. Com playlists
+                personalizáveis, suporte a plataformas como Spotify, YouTube e
+                SoundCloud, e comandos super fáceis de usar, esse bot é o DJ
+                perfeito para qualquer ocasião.
+              </p>
+
+              <MusicBotAbout />
+
+              <Link to={"/"}>
+                <Button className="bg-transparent text-white border border-[#FE9001] hover:bg-[#FE9001] mt-10 rounded-full w-full font-poppins justify-between font-semibold uppercase gap-2">
+                  Adicione a Amadeus em seu servidor! <MoveRight />
+                </Button>
+              </Link>
+            </div>
+
+            <div className=" w-full h-full">
+              <img
+                src="/assets/kurisu-about-section.gif"
+                className="w-full h-full object-cover rounded-xl"
+                alt="Descrição da imagem"
+              />
+            </div>
           </div>
         </section>
 
-        <section id="docs">Documentação</section>
+        <section id="docs" className="container mx-auto">
+          <h1 className="text-4xl font-poppins font-bold uppercase text-center">
+            Documentação
+          </h1>
+        </section>
+
+        <section id="support">Suporte</section>
 
         {/* <Footer /> */}
       </main>
