@@ -6,19 +6,13 @@ import Typewriter from "~/components/fancy/typewriter";
 import { Button } from "~/components/ui/button";
 import { MoveRight } from "lucide-react";
 import MusicBotAbout from "~/components/About";
+import ScrollIndicator from "~/components/ScrollIndicator";
 
 const menuItems = [
   { name: "Adicionar Bot", href: "/" },
   { name: "Sobre", href: "/#about" },
   { name: "Documentação", href: "/#docs" },
   { name: "Suporte", href: "/#support" },
-];
-
-const aboutItems = [
-  "Qualidade de som cristalina, como se você estivesse em um show ao vivo.",
-  "Crie filas de músicas com seus amigos em tempo real!",
-  "Comandos simples e intuitivos: toque, pule, pause ou embaralhe músicas com facilidade.",
-  "100% gratuito, leve e sempre online para animar seu servidor.",
 ];
 
 export const meta: MetaFunction = () => {
@@ -85,9 +79,14 @@ export default function Index() {
               Um simples bot de música para seu servidor Discord.
             </span>
           </div>
+
+          <ScrollIndicator />
         </section>
 
-        <section id="about" className="h-screen bg-black">
+        <section
+          id="about"
+          className="h-screen bg-black flex items-center justify-center"
+        >
           <div className="grid grid-cols-2 mx-auto container gap-20">
             <div className="space-y-6">
               <h1 className="text-4xl font-poppins font-bold uppercase">
@@ -110,7 +109,7 @@ export default function Index() {
               </Link>
             </div>
 
-            <div className=" w-full h-full">
+            <div className="w-full h-full">
               <img
                 src="/assets/kurisu-about-section.gif"
                 className="w-full h-full object-cover rounded-xl"
@@ -120,7 +119,10 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="docs" className="container mx-auto">
+        <section
+          id="docs"
+          className="container mx-auto h-screen flex items-center justify-center"
+        >
           <h1 className="text-4xl font-poppins font-bold uppercase text-center">
             Documentação
           </h1>
