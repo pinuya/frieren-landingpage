@@ -3,7 +3,7 @@
 </p>
 <h1 align="center">Furina Bot</h1>
 
-[![Site preview](/public/assets/furinatemplate.png)](https://pinuya.site)
+[![Site preview](/public/assets/kurisutemplate.png)](https://pinuya.site)
 
 ## Install & run
 
