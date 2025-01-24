@@ -37,7 +37,7 @@ export default function Index() {
           {menuItems.map((item) => (
             <li key={item.name}>
               <Link to={item.href}>
-                <span className="cursor-pointer hover:text-[#FE9001] brightness-90  text-sm">
+                <span className="cursor-pointer hover:text-[#FE9001] transition-colors text-sm">
                   {item.name}
                 </span>
               </Link>
@@ -128,9 +128,16 @@ export default function Index() {
           </h1>
         </section>
 
-        <section id="support">Suporte</section>
+        <section
+          id="support"
+          className="container mx-auto h-screen flex items-center justify-center"
+        >
+          <h1 className="text-4xl font-poppins font-bold uppercase text-center">
+            Suporte
+          </h1>
+        </section>
 
-        {/* <Footer /> */}
+        <Footer />
       </main>
     </div>
   );

@@ -1,79 +1,43 @@
 import { Link } from "@remix-run/react";
-import { Github, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="text-white">
-      <div className="px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <div>
-              <img src="/favicon.ico" className="w-24" />
+    <footer className="w-full">
+      <div className="mx-auto px-4 py-10 md:py-16 flex flex-col items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl">
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <div>
+                <img src="/favicon.ico" className="w-16" />
+              </div>
+              <span className="text-xl font-bold">Amadeus Bot</span>
             </div>
-            <p className="text-gray-300 mt-4">
+            <p className="text-gray-600 max-w-xs">
               Oferecendo soluções inovadoras para um mundo em constante
               evolução.
             </p>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Links Rápidos</h3>
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to={""} className="hover:text-gray-300 transition-colors">
-                  Adicione o bot ao seu servidor
-                </Link>
-              </li>
-              <li>
-                <Link to={""} className="hover:text-gray-300 transition-colors">
-                  Início
-                </Link>
-              </li>
-              <li>
-                <Link to={""} className="hover:text-gray-300 transition-colors">
-                  Sobre
-                </Link>
-              </li>
-              <li>
-                <Link to={""} className="hover:text-gray-300 transition-colors">
-                  Documentacao
-                </Link>
-              </li>
+              {["Home", "Sobre", "Documentação", "Suporte"].map((item) => (
+                <li key={item}>
+                  <Link
+                    to={`/${item.toLowerCase()}`}
+                    className="text-gray-600 hover:text-[#FE9001] transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Siga-nos</h3>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="hover:text-gray-300 transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter />
-              </a>
-              <a
-                href="#"
-                className="hover:text-gray-300 transition-colors"
-                aria-label="Instagram"
-              >
-                <Github />
-              </a>
-              <a
-                href="#"
-                className="hover:text-gray-300 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin />
-              </a>
-            </div>
-          </div>
         </div>
-        <div className="mt-8 pt-8 border-t border-gray-700 text-center">
-          <p className="text-gray-300">
-            © {new Date().getFullYear()} FurinaBot. Todos os direitos
-            reservados.
-          </p>
+
+        <div className="mt-8 pt-8 border-t border-gray-600 text-center text-gray-500 text-sm w-full">
+          © {new Date().getFullYear()} Amadeus bot. Todos os direitos
+          reservados.
         </div>
       </div>
     </footer>
