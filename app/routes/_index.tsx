@@ -17,10 +17,10 @@ const menuItems = [
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Amadeus" },
+    { title: "Frieren" },
     {
       name: "Melhor bot de musica",
-      content: "Bem-vindos a landing page da Amadeus bot!",
+      content: "Bem-vindos a landing page da Frieren bot!",
     },
   ];
 };
@@ -28,24 +28,6 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div>
-      <nav className="flex flex-row items-center justify-between mx-auto mt-4 container bg-black">
-        <Link to="/" className="flex flex-row items-center gap-2">
-          <img src="/favicon.ico" className="w-[50px]" />
-        </Link>
-
-        <ul className="flex space-x-6 font-poppins uppercase">
-          {menuItems.map((item) => (
-            <li key={item.name}>
-              <Link to={item.href}>
-                <span className="cursor-pointer hover:text-[#FE9001] transition-colors text-sm">
-                  {item.name}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
       <main>
         <section
           id="hero"
