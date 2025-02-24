@@ -29,9 +29,6 @@ export default function ScrollIndicator() {
         }}
         className="flex flex-col items-center text-center"
       >
-        <span className="text-sm text-muted-foreground mb-2">
-          Role para explorar
-        </span>
         <AiOutlineDown className="h-6 w-6 animate-bounce" />
       </motion.div>
     </div>

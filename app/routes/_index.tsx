@@ -1,19 +1,12 @@
 import type { MetaFunction } from "@remix-run/node";
-import { motion } from "framer-motion";
-import { Link } from "@remix-run/react";
-import Footer from "~/components/Footer";
-import Typewriter from "~/components/fancy/typewriter";
+import { motion, useInView } from "framer-motion";
+import { Link, Links } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
-import { MoveRight } from "lucide-react";
+import { Linkedin, MoveRight } from "lucide-react";
 import MusicBotAbout from "~/components/About";
 import ScrollIndicator from "~/components/ScrollIndicator";
-
-const menuItems = [
-  { name: "Adicionar Bot", href: "/" },
-  { name: "Sobre", href: "/#about" },
-  { name: "Documentação", href: "/#docs" },
-  { name: "Suporte", href: "/#support" },
-];
+import { useEffect, useRef } from "react";
+import HeroSection from "~/components/HeroSection";
 
 export const meta: MetaFunction = () => {
   return [
@@ -26,101 +19,106 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
   return (
     <div>
-      <main>
-        <section
-          id="hero"
-          className="relative h-screen flex flex-col items-center justify-center py-4"
-        >
-          <div
-            className="absolute inset-0 -z-10 bg-cover bg-center"
-            style={{
-              backgroundImage: "url('/assets/bg-hero-section.jpg')",
-              backgroundAttachment: "fixed",
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/70 to-black" />
-          </div>
+      <HeroSection />
 
-          <div className="container mx-auto relative z-10">
-            <div className="w-full md:text-4xl lg:text-7xl sm:text-3xl text-2xl flex flex-row font-semibold overflow-hidden py-3 text-white">
-              <span className="whitespace-pre-wrap">
-                <span>{"Amadeus "}</span>
-                <Typewriter
-                  text={["system", "bot"]}
-                  speed={70}
-                  className="text-[#FE9001] brightness-90"
-                  waitTime={1500}
-                  deleteSpeed={40}
-                  cursorChar={"_"}
-                />
-              </span>
-            </div>
-            <span className="text-gray-400 block">
-              Um simples bot de música para seu servidor Discord.
-            </span>
-          </div>
+      <section
+        id="about"
+        ref={sectionRef}
+        className="relative min-h-screen bg-black flex items-center justify-center py-16 px-4 md:px-8 overflow-hidden"
+      >
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black bg-opacity-85" />
+          <img
+            src="/assets/frierenAbout.gif"
+            alt="Frieren plano de fundo"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-          <ScrollIndicator />
-        </section>
+        <div className="container mx-auto max-w-3xl relative z-10">
+          <div className="space-y-8">
+            <motion.h1
+              className="text-3xl md:text-4xl lg:text-5xl font-poppins font-bold uppercase text-center text-white"
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={fadeInUp}
+            >
+              Frieren
+            </motion.h1>
 
-        <section
-          id="about"
-          className="h-screen bg-black flex items-center justify-center"
-        >
-          <div className="grid grid-cols-2 mx-auto container gap-20">
-            <div className="space-y-6">
-              <h1 className="text-4xl font-poppins font-bold uppercase">
-                Amadeus Bot
-              </h1>
-              <p className="text-gray-400">
-                Imagine um bot que transforma cada momento no seu servidor
-                Discord em uma experiência inesquecível. Com playlists
-                personalizáveis, suporte a plataformas como Spotify, YouTube e
-                SoundCloud, e comandos super fáceis de usar, esse bot é o DJ
-                perfeito para qualquer ocasião.
-              </p>
+            <motion.p
+              className="text-gray-300 text-center md:text-left"
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={fadeInUp}
+              transition={{ delay: 0.2 }}
+            >
+              Frieren, a Maga Élfica, é uma personagem poderosa e enigmática do
+              anime "Frieren: Além do Fim da Viagem". Com séculos de
+              conhecimento mágico e uma perspectiva única sobre a vida, Frieren
+              traz profundidade e sabedoria para o seu servidor Discord. Nosso
+              bot captura a essência de Frieren, permitindo que você experimente
+              sua magia, conhecimento e humor sutil em sua própria comunidade.
+            </motion.p>
 
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={fadeInUp}
+              transition={{ delay: 0.4 }}
+            >
               <MusicBotAbout />
+            </motion.div>
 
+            <motion.div
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={fadeInUp}
+              transition={{ delay: 0.6 }}
+            >
               <Link to={"/"}>
-                <Button className="bg-transparent text-white border border-[#FE9001] hover:bg-[#FE9001] mt-10 rounded-full w-full font-poppins justify-between font-semibold uppercase gap-2">
-                  Adicione a Amadeus em seu servidor! <MoveRight />
+                <Button className="text-white border bg-gradient-to-r from-indigo-300  to-blue-400 hover:bg-blue-500 mt-10 rounded-full w-full justify-between font-semibold uppercase">
+                  Adicione a Frieren em seu servidor! <MoveRight />
                 </Button>
               </Link>
-            </div>
-
-            <div className="w-full h-full">
-              <img
-                src="/assets/kurisu-about-section.gif"
-                className="w-full h-full object-cover rounded-xl"
-                alt="Descrição da imagem"
-              />
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section
-          id="docs"
-          className="container mx-auto h-screen flex items-center justify-center"
-        >
-          <h1 className="text-4xl font-poppins font-bold uppercase text-center">
-            Documentação
-          </h1>
-        </section>
+      <section
+        id="docs"
+        className="container mx-auto h-screen flex items-center justify-center"
+      >
+        <h1 className="text-4xl font-poppins font-bold uppercase text-center">
+          Documentação
+        </h1>
+      </section>
 
-        <section
-          id="support"
-          className="container mx-auto h-screen flex items-center justify-center"
-        >
-          <h1 className="text-4xl font-poppins font-bold uppercase text-center">
-            Suporte
-          </h1>
-        </section>
-
-        <Footer />
-      </main>
+      <section
+        id="support"
+        className="container mx-auto h-screen flex items-center justify-center"
+      >
+        <h1 className="text-4xl font-poppins font-bold uppercase text-center">
+          Suporte
+        </h1>
+      </section>
     </div>
   );
 }

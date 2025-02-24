@@ -43,7 +43,7 @@ function Feature({
   return (
     <div className="flex items-center gap-4">
       <div className="bg-primary/10 p-2 rounded-full">
-        <Icon className="w-6 h-6 text-[#FE9001]" />
+        <Icon className="w-6 h-6 text-blue-300" />
       </div>
       <div>
         <h3 className="font-semibold">{title}</h3>

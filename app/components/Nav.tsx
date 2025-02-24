@@ -15,14 +15,14 @@ export default function Nav() {
           />
         </Link>
         <nav className="hidden md:flex space-x-6">
-          <Link to={"#features"} className="hover:text-blue-400">
-            Recursos
-          </Link>
-          <Link to={"#about"} className="hover:text-blue-400">
+          <Link to={"/#about"} className="hover:text-blue-400">
             Sobre
           </Link>
-          <Link to={"add-blot"} className="hover:text-blue-400">
-            Adicionar ao Discord
+          <Link to={"/#docs"} className="hover:text-blue-400">
+            Documentação
+          </Link>
+          <Link to={"/#support"} className="hover:text-blue-400">
+            Suporte
           </Link>
         </nav>
         <Button className="bg-blue-400 hover:bg-blue-600 text-white">
