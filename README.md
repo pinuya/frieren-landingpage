@@ -1,9 +1,9 @@
 <p align="center">
   <img src="/public/favicon.ico" width="50" alt="Logo" />
 </p>
-<h1 align="center">Amadeus</h1>
+<h1 align="center">Frieren</h1>
 
-[![Site preview](/public/assets/kurisutemplate.png)](https://pinuya.site)
+[![Site preview](/public/assets/frierenTemplate.png)](https://pinuya.site)
 
 ## Install & run
 
