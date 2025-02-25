@@ -25,7 +25,7 @@ export default function Nav() {
             Suporte
           </Link>
         </nav>
-        <Button className="bg-blue-400 hover:bg-blue-600 text-white">
+        <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl  text-white">
           Adicionar ao Discord
         </Button>
       </div>

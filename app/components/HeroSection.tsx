@@ -117,7 +117,7 @@ export default function HeroSection() {
 
                 <div className="mt-8 flex flex-wrap gap-4">
                   <motion.button
-                    className="bg-blue-400 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium"
+                    className="text-white items-center bg-gradient-to-br from-cyan-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center uppercase flex gap-4 me-2 mb-2"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -125,7 +125,7 @@ export default function HeroSection() {
                   </motion.button>
                   <Link to={"/#about"}>
                     <motion.button
-                      className="border border-gray-500 text-gray-300 hover:text-white px-6 py-3 rounded-lg font-medium"
+                      className="border border-gray-500 text-gray-300 hover:text-white rounded-lg font-medium px-5 py-2.5 text-center flex gap-4 me-2 mb-2"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
