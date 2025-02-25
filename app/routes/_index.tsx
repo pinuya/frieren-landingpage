@@ -1,12 +1,12 @@
 import type { MetaFunction } from "@remix-run/node";
 import { motion, useInView } from "framer-motion";
-import { Link, Links } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
-import { Linkedin, MoveRight } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import MusicBotAbout from "~/components/About";
-import ScrollIndicator from "~/components/ScrollIndicator";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import HeroSection from "~/components/HeroSection";
+import { MusicBotDocs } from "~/components/Docs";
 
 export const meta: MetaFunction = () => {
   return [
@@ -106,9 +106,7 @@ export default function Index() {
         id="docs"
         className="container mx-auto h-screen flex items-center justify-center"
       >
-        <h1 className="text-4xl font-poppins font-bold uppercase text-center">
-          Documentação
-        </h1>
+        <MusicBotDocs />
       </section>
 
       <section
