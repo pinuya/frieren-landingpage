@@ -1,7 +1,11 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { motion } from "motion/react";
+import TextHighlighter from "~/components/fancy/text/text-highlighter";
 import ImageTrailDemo from "~/components/image-trail-instant-demo";
+import { Transition } from "motion";
+import { CharacterCard } from "~/components/character-card";
+import { characters } from "~/data/characters";
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,6 +18,10 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const transition = { type: "spring", duration: 1, delay: 0.4, bounce: 0 };
+  const highlightClass = "rounded-[0.3em] px-px";
+  const highlightColor = "#8196cc";
+  const inViewOptions = { once: true, initial: true, amount: 0.1 };
   return (
     <div>
       <section
@@ -79,10 +87,26 @@ export default function Index() {
                   transition={{ duration: 0.5, delay: 0.1 }}
                   className="text-lg text-slate-600"
                 >
-                  Frieren é uma maga elfa que viveu por mais de mil anos. Após
-                  uma jornada de dez anos ao lado do herói Himmel e seus
-                  companheiros para derrotar o Rei Demônio, ela percebe que mal
-                  conheceu seus amigos humanos.
+                  <TextHighlighter
+                    className={highlightClass}
+                    transition={transition as Transition}
+                    highlightColor={highlightColor}
+                    useInViewOptions={inViewOptions}
+                  >
+                    Frieren
+                  </TextHighlighter>{" "}
+                  é uma maga elfa que viveu por mais de mil anos. Após uma
+                  jornada de dez anos ao lado do herói{" "}
+                  <TextHighlighter
+                    className={highlightClass}
+                    transition={transition as Transition}
+                    highlightColor={highlightColor}
+                    useInViewOptions={inViewOptions}
+                  >
+                    Himmel
+                  </TextHighlighter>{" "}
+                  e seus companheiros para derrotar o Rei Demônio, ela percebe
+                  que mal conheceu seus amigos humanos.
                 </motion.p>
 
                 <motion.p
@@ -92,9 +116,16 @@ export default function Index() {
                   className="text-lg text-slate-600"
                 >
                   Quando Himmel falece de velhice, Frieren sente remorso por não
-                  ter dado valor ao tempo que passaram juntos. Determinada a
-                  entender melhor os humanos e honrar suas memórias, ela embarca
-                  em uma nova jornada.
+                  ter dado valor ao tempo que passaram juntos.{" "}
+                  <TextHighlighter
+                    className={highlightClass}
+                    transition={transition as Transition}
+                    highlightColor={highlightColor}
+                    useInViewOptions={inViewOptions}
+                  >
+                    Determinada a entender melhor os humanos e honrar suas
+                    memórias, ela embarca em uma nova jornada.
+                  </TextHighlighter>
                 </motion.p>
               </div>
             </div>
@@ -117,7 +148,29 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="characters"></section>
+      <section id="characters" className="px-4 py-20 md:px-8 lg:px-16">
+        <div className="mx-auto max-w-7xl">
+          <h1 className="mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-center text-4xl font-bold text-transparent md:text-5xl">
+            Personagens da Jornada
+          </h1>
+          <p className="mx-auto mb-12 max-w-3xl text-center text-xl text-gray-500">
+            Conheça os heróis e companheiros que fizeram parte da emocionante
+            jornada em{" "}
+            <span className="text-primary">Frieren: Beyond Journey's End</span>
+          </p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          >
+            {characters.map((character) => (
+              <CharacterCard key={character.id} character={character} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
       <section id="info-anime"></section>
 

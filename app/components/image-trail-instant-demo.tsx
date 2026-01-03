@@ -5,6 +5,8 @@ const images = [
   "/assets/gallery/gallery02.jpg",
   "/assets/gallery/gallery03.jpg",
   "/assets/gallery/gallery04.jpg",
+  "/assets/gallery/gallery05.jpg",
+  "/assets/gallery/gallery06.jpg",
 ];
 
 const ImageTrailDemo = () => {
