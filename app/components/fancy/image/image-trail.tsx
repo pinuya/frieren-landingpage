@@ -1,76 +1,76 @@
-import React, { ElementType, HTMLAttributes, useEffect, useMemo } from "react"
-import type { DOMKeyframesDefinition, AnimationOptions } from "motion"
-import { useAnimate } from "motion/react"
+import React, { ElementType, HTMLAttributes, useEffect, useMemo } from "react";
+import type { DOMKeyframesDefinition, AnimationOptions } from "motion";
+import { useAnimate } from "motion/react";
 
-import { cn } from "~/lib/utils"
+import { cn } from "~/lib/utils";
 
 interface ImageTrailProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * The content to be displayed
    */
-  children: React.ReactNode
+  children: React.ReactNode;
 
   /**
    * HTML Tag
    */
-  as?: ElementType
+  as?: ElementType;
 
   /**
    * How much distance in pixels the mouse has to travel to trigger of an element to appear.
    */
-  threshold?: number
+  threshold?: number;
 
   /**
    * The intensity for the momentum movement after showing the element. The value will be clamped > 0 and <= 1.0. Defaults to 0.3.
    */
-  intensity?: number
+  intensity?: number;
 
   /**
    * Animation Keyframes for defining the animation sequence. Example: { scale: [0, 1, 1, 0] }
    */
-  keyframes?: DOMKeyframesDefinition
+  keyframes?: DOMKeyframesDefinition;
 
   /**
    * Options for the animation/keyframes. Example: { duration: 1, times: [0, 0.1, 0.9, 1] }
    */
-  keyframesOptions?: AnimationOptions
+  keyframesOptions?: AnimationOptions;
 
   /**
    * Animation keyframes for the x and y positions after showing the element. Describes how the element should try to arrive at the mouse position.
    */
   trailElementAnimationKeyframes?: {
-    x?: AnimationOptions
-    y?: AnimationOptions
-  }
+    x?: AnimationOptions;
+    y?: AnimationOptions;
+  };
 
   /**
    * The number of times the children will be repeated. Defaults to 3.
    */
-  repeatChildren?: number
+  repeatChildren?: number;
 
   /**
    * The base zIndex for all elements. Defaults to 0.
    */
-  baseZIndex?: number
+  baseZIndex?: number;
 
   /**
    * Controls stacking order behavior.
    * - "new-on-top": newer elements stack above older ones (default)
    * - "old-on-top": older elements stay visually on top
    */
-  zIndexDirection?: "new-on-top" | "old-on-top"
+  zIndexDirection?: "new-on-top" | "old-on-top";
 }
 
 interface ImageTrailItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * HTML Tag
    */
-  as?: ElementType
+  as?: ElementType;
 
   /**
    * The content to be displayed
    */
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 /**
@@ -82,7 +82,7 @@ const MathUtils = {
   // distance between two points
   distance: (x1: number, y1: number, x2: number, y2: number) =>
     Math.hypot(x2 - x1, y2 - y1),
-}
+};
 
 const ImageTrail = ({
   className,
@@ -101,81 +101,81 @@ const ImageTrail = ({
   zIndexDirection = "new-on-top",
   ...props
 }: ImageTrailProps) => {
-  const allImages = React.useRef<NodeListOf<HTMLElement>>(undefined)
-  const currentId = React.useRef(0)
-  const lastMousePos = React.useRef({ x: 0, y: 0 })
-  const cachedMousePos = React.useRef({ x: 0, y: 0 })
-  const [containerRef, animate] = useAnimate()
-  const zIndices = React.useRef<number[]>([])
+  const allImages = React.useRef<NodeListOf<HTMLElement>>(undefined);
+  const currentId = React.useRef(0);
+  const lastMousePos = React.useRef({ x: 0, y: 0 });
+  const cachedMousePos = React.useRef({ x: 0, y: 0 });
+  const [containerRef, animate] = useAnimate();
+  const zIndices = React.useRef<number[]>([]);
 
   const clampedIntensity = useMemo(
     () => Math.max(0.0001, Math.min(1, intensity)),
     [intensity]
-  )
+  );
 
   useEffect(() => {
     allImages.current = containerRef?.current?.querySelectorAll(
       ".image-trail-item"
-    ) as NodeListOf<HTMLElement>
+    ) as NodeListOf<HTMLElement>;
 
     zIndices.current = Array.from(
       { length: allImages.current.length },
       (_, index) => index
-    )
-  }, [containerRef, allImages])
+    );
+  }, [containerRef, allImages]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const containerRect = containerRef?.current?.getBoundingClientRect()
+    const containerRect = containerRef?.current?.getBoundingClientRect();
     const mousePos = {
       x: e.clientX - (containerRect?.left || 0),
       y: e.clientY - (containerRect?.top || 0),
-    }
+    };
 
     cachedMousePos.current.x = MathUtils.lerp(
       cachedMousePos.current.x || mousePos.x,
       mousePos.x,
       clampedIntensity
-    )
+    );
 
     cachedMousePos.current.y = MathUtils.lerp(
       cachedMousePos.current.y || mousePos.y,
       mousePos.y,
       clampedIntensity
-    )
+    );
 
     const distance = MathUtils.distance(
       mousePos.x,
       mousePos.y,
       lastMousePos.current.x,
       lastMousePos.current.y
-    )
+    );
 
     if (distance > threshold && allImages?.current) {
-      const N = allImages.current.length
-      const current = currentId.current
+      const N = allImages.current.length;
+      const current = currentId.current;
 
       if (zIndexDirection === "new-on-top") {
         // Shift others down, put current on top
         for (let i = 0; i < N; i++) {
           if (i !== current) {
-            zIndices.current[i] -= 1
+            zIndices.current[i] -= 1;
           }
         }
-        zIndices.current[current] = N - 1
+        zIndices.current[current] = N - 1;
       } else {
         // Shift others up, put current at bottom
         for (let i = 0; i < N; i++) {
           if (i !== current) {
-            zIndices.current[i] += 1
+            zIndices.current[i] += 1;
           }
         }
-        zIndices.current[current] = 0
+        zIndices.current[current] = 0;
       }
 
-      allImages.current[current].style.display = "block"
+      allImages.current[current].style.display = "block";
       allImages.current.forEach((img, index) => {
-        img.style.zIndex = String(zIndices.current[index] + baseZIndex)
-      })
+        img.style.zIndex = String(zIndices.current[index] + baseZIndex);
+      });
 
       animate(
         allImages.current[currentId.current],
@@ -198,13 +198,13 @@ const ImageTrail = ({
           ...trailElementAnimationKeyframes.y,
           ...keyframesOptions,
         }
-      )
-      currentId.current = (current + 1) % N
-      lastMousePos.current = { x: mousePos.x, y: mousePos.y }
+      );
+      currentId.current = (current + 1) % N;
+      lastMousePos.current = { x: mousePos.x, y: mousePos.y };
     }
-  }
+  };
 
-  const ElementTag = as ?? "div"
+  const ElementTag = as ?? "div";
 
   return (
     <ElementTag
@@ -213,12 +213,12 @@ const ImageTrail = ({
       ref={containerRef}
       {...props}
     >
-      {Array.from({ length: repeatChildren }).map(() => (
-        <>{children}</>
+      {Array.from({ length: repeatChildren }).map((_, index) => (
+        <React.Fragment key={index}>{children}</React.Fragment>
       ))}
     </ElementTag>
-  )
-}
+  );
+};
 
 export const ImageTrailItem = ({
   className,
@@ -226,7 +226,7 @@ export const ImageTrailItem = ({
   as = "div",
   ...props
 }: ImageTrailItemProps) => {
-  const ElementTag = as ?? "div"
+  const ElementTag = as ?? "div";
   return (
     <ElementTag
       {...props}
@@ -238,7 +238,7 @@ export const ImageTrailItem = ({
     >
       {children}
     </ElementTag>
-  )
-}
+  );
+};
 
-export default ImageTrail
+export default ImageTrail;
