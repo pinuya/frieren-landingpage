@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import ImageTrail, { ImageTrailItem } from "./fancy/image/image-trail";
 
 const images = [
@@ -23,16 +24,30 @@ const ImageTrailDemo = () => {
       >
         {images.map((url, index) => (
           <ImageTrailItem key={index}>
-            <div className="relative h-full w-20 overflow-hidden sm:w-28">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              className="relative h-full w-20 overflow-hidden sm:w-28"
+            >
               <img src={url} alt="image" className="object-cover" />
-            </div>
+            </motion.div>
           </ImageTrailItem>
         ))}
       </ImageTrail>
 
-      <h1 className="z-100 pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-5xl text-transparent sm:text-9xl">
-        FRIEREN
-      </h1>
+      <motion.h1
+        initial={{ opacity: 0, y: 30, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          duration: 1.2,
+          ease: [0.23, 1, 0.32, 1],
+          delay: 0.5,
+        }}
+        className="z-100 pointer-events-none absolute inset-0 flex items-center justify-center bg-gradient-to-r from-primary to-secondary bg-clip-text text-5xl text-transparent sm:text-9xl"
+      >
+        SOUSOU NO FRIEREN
+      </motion.h1>
     </div>
   );
 };

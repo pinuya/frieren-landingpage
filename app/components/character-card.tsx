@@ -23,7 +23,7 @@ export function CharacterCard({
       <div className="absolute inset-0 flex translate-y-4 transform flex-col justify-end p-6 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
         <div className="space-y-3">
           <div>
-            <h3 className="text-2xl font-bold drop-shadow-lg">
+            <h3 className="text-2xl font-bold text-white drop-shadow-lg">
               {character.name}
             </h3>
             <p className="text-lg font-semibold text-gray-200 drop-shadow-md">
@@ -36,7 +36,7 @@ export function CharacterCard({
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 transition-opacity duration-300 group-hover:opacity-0">
         <h3 className="text-xl font-bold text-white">{character.name}</h3>
       </div>
     </div>
