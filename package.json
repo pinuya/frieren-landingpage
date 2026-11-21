@@ -11,44 +11,47 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@radix-ui/react-accordion": "^1.2.12",
-    "@radix-ui/react-slot": "^1.2.4",
-    "@remix-run/node": "^2.17.3",
-    "@remix-run/react": "^2.17.3",
-    "@remix-run/serve": "^2.17.3",
+    "@radix-ui/react-accordion": "^1.3.1",
+    "@radix-ui/react-slot": "^1.5.0",
+    "@remix-run/node": "^2.17.5",
+    "@remix-run/react": "^2.17.5",
+    "@remix-run/serve": "^2.17.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.25.0",
+    "framer-motion": "^12.43.0",
     "install": "^0.13.0",
-    "isbot": "^5.1.32",
+    "isbot": "^5.2.3",
     "lucide-react": "^0.562.0",
-    "motion": "^12.25.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "react-icons": "^5.5.0",
-    "tailwind-merge": "^3.4.0",
-    "tailwindcss": "^3.4.0",
+    "motion": "^12.43.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-icons": "^5.7.0",
+    "tailwind-merge": "^3.7.1",
+    "tailwindcss": "^3.4.19",
     "tailwindcss-animate": "^1.0.7",
-    "vite": "^7.3.1"
+    "vite": "^6.4.6"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.17.3",
-    "@types/react": "^19.2.8",
-    "@types/react-dom": "^19.2.3",
-    "@typescript-eslint/eslint-plugin": "^8.52.0",
-    "@typescript-eslint/parser": "^8.52.0",
-    "autoprefixer": "^10.4.23",
-    "eslint": "^9.39.2",
-    "eslint-import-resolver-typescript": "^4.4.4",
+    "@remix-run/dev": "^2.17.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.73.0",
+    "@typescript-eslint/parser": "^8.73.0",
+    "autoprefixer": "^10.7.0",
+    "eslint": "^9.39.5",
+    "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "postcss": "^8.5.6",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "postcss": "^8.5.33",
     "typescript": "^5.9.3",
-    "vite-tsconfig-paths": "^6.0.4"
+    "vite-tsconfig-paths": "^6.1.1"
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "overrides": {
+    "vite": "^6.4.6"
   }
 }
