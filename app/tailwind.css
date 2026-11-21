@@ -2,62 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Paleta "Noite do Norte": céu profundo do Planalto do Norte, luz da lua,
+ * o azul-claro da magia de Frieren e o dourado gasto dos grimórios.
+ */
 @layer base {
   :root {
-    --background: 219.9988 11.1749% 94.701%;
-    --foreground: 223.8136 0% 3.9388%;
-    --card: 223.8136 -172.5242% 100%;
-    --card-foreground: 223.8136 0% 3.9388%;
-    --popover: 223.8136 -172.5242% 100%;
-    --popover-foreground: 223.8136 0% 3.9388%;
-    --primary: 216.3869 40.1582% 45.8889%;
-    --primary-foreground: 219.9988 11.1749% 94.701%;
-    --secondary: 223.2016 42.3499% 65.296%;
-    --secondary-foreground: 223.8136 0% 9.0527%;
-    --muted: 222.9711 99.0634% 84.3248%;
-    --muted-foreground: 223.8136 0% 45.1519%;
-    --accent: 222.9711 99.0634% 84.3248%;
-    --accent-foreground: 223.8136 0% 9.0527%;
-    --destructive: 351.7303 123.6748% 40.5257%;
-    --destructive-foreground: 223.8136 -172.5242% 100%;
-    --border: 223.8136 0.0001% 89.8161%;
-    --input: 223.8136 0.0001% 89.8161%;
-    --ring: 222.9711 99.0634% 84.3248%;
-    --chart-1: 222.9711 99.0634% 84.3248%;
-    --chart-2: 223.2016 42.3499% 65.296%;
-    --chart-3: 216.3869 40.1582% 45.8889%;
-    --chart-4: 223.6587 78.718% 47.8635%;
-    --chart-5: 226.5426 70.0108% 39.9224%;
-    --sidebar: 223.8136 0.0004% 98.0256%;
-    --sidebar-foreground: 223.8136 0% 3.9388%;
-    --sidebar-primary: 223.8136 0% 9.0527%;
-    --sidebar-primary-foreground: 223.8136 0.0004% 98.0256%;
-    --sidebar-accent: 223.8136 0.0002% 96.0587%;
-    --sidebar-accent-foreground: 223.8136 0% 9.0527%;
-    --sidebar-border: 223.8136 0.0001% 89.8161%;
-    --sidebar-ring: 223.8136 0% 63.0163%;
+    --background: 228 51% 8%;
+    --foreground: 216 45% 91%;
+    --card: 228 46% 12%;
+    --card-foreground: 216 45% 91%;
+    --popover: 228 46% 12%;
+    --popover-foreground: 216 45% 91%;
+    --primary: 210 52% 72%;
+    --primary-foreground: 228 51% 8%;
+    --secondary: 40 52% 66%;
+    --secondary-foreground: 228 51% 8%;
+    --muted: 228 30% 18%;
+    --muted-foreground: 218 20% 68%;
+    --accent: 210 52% 72%;
+    --accent-foreground: 228 51% 8%;
+    --destructive: 352 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 30% 24%;
+    --input: 220 30% 24%;
+    --ring: 210 52% 72%;
     --radius: 0.625rem;
-    --shadow-x: 0;
-    --shadow-y: 1px;
-    --shadow-blur: 3px;
-    --shadow-spread: 0px;
-    --shadow-opacity: 0.1;
-    --shadow-color: oklch(0 0 0);
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-      0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-      0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-      0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-      0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1),
-      0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-    --tracking-normal: 0em;
-    --spacing: 0.25rem;
   }
 }
 
@@ -65,20 +35,73 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-    overflow-x: hidden;
-  }
   html {
     scroll-behavior: smooth;
   }
+  body {
+    @apply bg-night font-cormorant text-moon antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(143, 184, 222, 0.35);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 1px solid #8fb8de;
+    outline-offset: 3px;
+  }
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+@layer components {
+  /* Título gravado, como inscrição em pedra */
+  .rune-title {
+    @apply font-cinzel tracking-[0.18em];
+    background: linear-gradient(180deg, #f4f7fc 0%, #b9cbe6 55%, #8fb8de 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 40px rgba(143, 184, 222, 0.25);
   }
-  body {
-    @apply bg-background text-foreground;
+
+  /* Painel de vidro encantado */
+  .arcane-panel {
+    @apply relative rounded-2xl border border-aura/15 bg-night-soft/60 backdrop-blur-md;
+    box-shadow: inset 0 1px 0 rgba(219, 228, 243, 0.06),
+      0 20px 60px -30px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Pergaminho (usado para citações e destaques) */
+  .parchment {
+    @apply relative rounded-xl text-night;
+    background: radial-gradient(
+        ellipse at top left,
+        rgba(255, 255, 255, 0.5),
+        transparent 60%
+      ),
+      linear-gradient(135deg, #efe6d2 0%, #e3d5b4 100%);
+    box-shadow: inset 0 0 40px rgba(120, 90, 40, 0.25),
+      0 20px 50px -25px rgba(0, 0, 0, 0.9);
+  }
+
+  .glow-line {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(214, 185, 123, 0.6),
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
